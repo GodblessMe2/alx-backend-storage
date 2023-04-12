@@ -8,7 +8,8 @@ from pymongo import MongoClient
 
 
 def log_stats():
-    """ log_stats.
+    """ 
+       log stats
     """
     client = MongoClient('mongodb://127.0.0.1:27017')
     logs_collections = client.logs.nginx
@@ -28,7 +29,6 @@ def log_stats():
     print(f"\tmethod PATCH: {patch}")
     print(f"\tmethod DELETE: {delete}")
     print(f"{path} status check")
-
 
 if __name__ == "__main__":
     log_stats()

@@ -5,6 +5,9 @@
 
 
 def update_topics(mongo_collection, name, topics):
-    query = {'name': name}
-    val = {'$set': {'topics': topics}}
-    mongo_collection.update_many(query, val)
+    """ 
+      update topics
+    """
+    queryName = {'name': name}
+    setValue = {'$set': {'topics': topics}}
+    mongo_collection.update_many(queryName, setValue)
