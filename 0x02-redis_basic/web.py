@@ -14,17 +14,17 @@ def count_url_access(method):
     a Url is accessed """
     @wraps(method)
     def wrapper(url):
-        cached = "cached:" + url
-        cached_data = store.get(cached)
+        cached_key = "cached:" + url
+        cached_data = store.get(cached_key)
         if cached_data:
             return cached_data.decode("utf-8")
 
-        count = "count:" + url
+        count_key = "count:" + url
         html = method(url)
 
-        store.incr(count)
-        store.set(cached, html)
-        store.expire(cached, 10)
+        store.incr(count_key)
+        store.set(cached_key, html)
+        store.expire(cached_key, 10)
         return html
     return wrapper
 
